@@ -1,0 +1,12 @@
+# Base
+Flask
+Flask-Script
+flask-sqlalchemy
+Flask-Restless
+Flask-JWT
+
+# Cache
+Flask-Cache
+
+# PostgreSQL
+psycopg2
