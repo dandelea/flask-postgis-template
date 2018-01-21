@@ -29,7 +29,7 @@ def create_app(config=None, app_name='Proyecto', blueprints=None):
 	)
 
 	app.config.from_pyfile('project/project.config', silent=True)
-	app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(days=60)
+	app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(days=1)
 
 	if blueprints is None:
 		blueprints = BLUEPRINTS
@@ -53,8 +53,14 @@ def blueprints_fabrics(app, blueprints):
 		app.register_blueprint(blueprint)
 
 def initialize_api():
-	manager.create_api(Postal, methods=['GET'], collection_name="postal_codes", preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]), postprocessors=dict(GET_SINGLE=[Postal_converter], GET_MANY=[Postals_converter])),
-	manager.create_api(Paystat, methods=['GET'], preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]))
+	manager.create_api(Postal, 
+		methods=['GET'], 
+		collection_name="postal_codes", 
+		#preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]), 
+		postprocessors=dict(GET_SINGLE=[Postal_converter], GET_MANY=[Postals_converter])),
+	manager.create_api(Paystat, 
+		methods=['GET'], 
+		preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]))
 
 def configure_logging(app):
 	"""Configure file(info) and email(error) logging."""

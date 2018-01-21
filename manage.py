@@ -25,15 +25,12 @@ def syncdb():
 
 @manager.command
 def restore():
-	manager.logger.info('Restore')
 
 	syncdb()
 
 	sources = ('data/paystats.csv', 'data/postal_codes.csv')
 	paystats = []
 	postal_codes = []
-
-	manager.logger.debug('Start reading data.')
 
 	with open(sources[0], 'rt', encoding="utf-8") as csvfile:
 		reader = csv.DictReader(csvfile)
@@ -44,8 +41,6 @@ def restore():
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			postal_codes.append(row)
-
-	manager.logger.debug('Start dumping data.')
 	
 	for postal in postal_codes:
 		db.session.add(
@@ -75,8 +70,6 @@ def restore():
 			password="daniel"))
 
 	db.session.commit()
-
-	manager.logger.info('SUCCESS')
 
 if __name__ == "__main__":
 	manager.run()

@@ -1,0 +1,99 @@
+{
+	"info": {
+		"name": "madrid_postgis",
+		"_postman_id": "a661281d-152f-f0fd-cfe5-c919a5298b25",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:5000/api/postal_codes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt <token>"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:5000/api/paystats",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paystats"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/api/paystats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt <token>"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "127.0.0.1:5000/api/paystats",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"paystats"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"daniel\", \"password\":\"daniel\"}"
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/auth",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"auth"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
