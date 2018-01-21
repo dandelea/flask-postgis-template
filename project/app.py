@@ -56,7 +56,7 @@ def initialize_api():
 	manager.create_api(Postal, 
 		methods=['GET'], 
 		collection_name="postal_codes", 
-		#preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]), 
+		preprocessors=dict(GET_SINGLE=[auth_func], GET_MANY=[auth_func]), 
 		postprocessors=dict(GET_SINGLE=[Postal_converter], GET_MANY=[Postals_converter])),
 	manager.create_api(Paystat, 
 		methods=['GET'], 
