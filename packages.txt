@@ -1,0 +1,17 @@
+build-essential 
+python3 
+python-software-properties 
+python-pip 
+python-setuptools 
+python-dev 
+python-virtualenv 
+python-pip 
+curl 
+git 
+git-core
+openssl 
+libssl-dev
+postgresql-9.6 
+postgresql-client-9.6 
+postgresql-contrib-9.6
+postgis
