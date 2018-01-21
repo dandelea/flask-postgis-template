@@ -1,8 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import csv
 
-from flask import json
+import csv
 
 from flask_script import Manager
 
@@ -10,10 +8,6 @@ from project.auth.models import User
 from project.database.models import Postal, Paystat
 from project import create_app
 from project.extensions import db
-
-from sqlalchemy import MetaData
-from sqlalchemy.exc import OperationalError
-from sqlalchemy.ext.serializer import dumps, loads
 
 manager = Manager(create_app)
 
@@ -31,13 +25,16 @@ def syncdb():
 
 @manager.command
 def restore():
-	print("Start importing data")
+	manager.logger.info('Restore')
 
 	syncdb()
 
 	sources = ('data/paystats.csv', 'data/postal_codes.csv')
 	paystats = []
 	postal_codes = []
+
+	manager.logger.debug('Start reading data.')
+
 	with open(sources[0], 'rt', encoding="utf-8") as csvfile:
 		reader = csv.DictReader(csvfile)
 		for row in reader:
@@ -47,13 +44,15 @@ def restore():
 		reader = csv.DictReader(csvfile)
 		for row in reader:
 			postal_codes.append(row)
+
+	manager.logger.debug('Start dumping data.')
 	
 	for postal in postal_codes:
 		db.session.add(
 			Postal(
 				id=postal["id"],
 				code=postal["code"],
-				geometry=postal["the_geom"]))
+				the_geom=postal["the_geom"]))
 
 	db.session.commit()
 
@@ -77,7 +76,7 @@ def restore():
 
 	db.session.commit()
 
-	print('Done')
+	manager.logger.info('SUCCESS')
 
 if __name__ == "__main__":
 	manager.run()

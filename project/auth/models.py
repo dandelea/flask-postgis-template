@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
+
 from ..extensions import db
 
 class User(db.Model):

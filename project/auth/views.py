@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from ..extensions import login
 
-from flask import Blueprint
+from ..extensions import login
 from .models import User
 
+from flask import Blueprint
 from flask_jwt import jwt_required
 
 auth = Blueprint('auth', __name__, url_prefix='/auth/')

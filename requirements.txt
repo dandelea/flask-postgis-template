@@ -10,3 +10,6 @@ Flask-Cache
 
 # PostgreSQL
 psycopg2
+
+# PostGIS
+GeoAlchemy2
