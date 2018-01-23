@@ -1,7 +1,7 @@
 all: setup
 
 venv/bin/activate:
-	virtualenv -p python3 venv; fi
+	virtualenv -p python3 venv
 
 run: venv/bin/activate requirements.txt
 	. venv/bin/activate; python3 manage.py runserver
